@@ -1,0 +1,67 @@
+<%if flash[:notice] %>
+  <p class="notice"><%= flash[:notice]%></p>
+<% else %>
+  <h2>スケジュール編集</h2>
+<% end %>
+
+
+<%= render "shared/error",error:@post%>
+
+<div class="main_container">
+  <div class="info_title">
+  </div>
+  <%= form_with model:@post do |f|%>
+    <table>
+      <tbody>
+        <tr>
+          <th>
+            <%= f.label :title,"タイトル"%>
+          </th>
+          <td>
+            <%= f.text_field :title%>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :start,"開始日"%>
+          </th>
+          <td>
+            <%= f.date_field :start %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :finish,"終了日"%>
+          </th>
+          <td>
+            <%= f.date_field :finish %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :all_day,"終日"%>
+          </th>
+          <td>
+            <%= f.check_box :all_day%><br>終日の場合はチェックを入れます
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :coment,"スケジュールメモ"%>
+          </th>
+          <td>
+            <%= f.text_area :coment %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>
+        <input type="submit" value="編集を完了する">
+      </li>
+      <li>
+        <p><%= link_to"スケジュール一覧に戻る",:posts%></p>
+      </li>
+    </ul>
+  <% end %>
+</div>

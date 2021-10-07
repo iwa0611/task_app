@@ -1,0 +1,47 @@
+<h2>スケジュール詳細</h2>
+
+<table>
+  <tbody>
+    
+    <tr>
+      <th>タイトル</th>
+      <td><%= @post.title%></td>
+    </tr>
+    
+    <tr>
+      <th>開始日</th>
+      <td><%= @post.start%></td>
+    </tr>
+    
+    <tr>
+      <th>投稿日</th>
+      <td><%= @post.created_at%></td>
+    </tr>
+    
+    <tr>
+      <th>終日</th>
+      <td>
+        <% if (@post.all_day == "1")%>
+          <p>○</p>
+        <% end %>
+      </td>
+    </tr>
+    
+    <tr>
+      <th>スケジュールメモ</th>
+      <td><%= @post.coment%></td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>
+    <p><%= link_to"スケジュール一覧に戻る",:posts%></p>
+  </li>
+  <li>
+    <p><%= link_to"スケジュールを編集する",[:edit,@post]%></p>
+  </li>
+  <li>
+    <p><%= link_to"スケジュールを削除",@post,method: :delete,data:{confirm:"ok?"}%></p>
+  </li>
+</ul>
